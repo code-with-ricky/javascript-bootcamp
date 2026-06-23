@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Manager</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-slate-950 text-slate-100 min-h-screen">
+    <div class="container mx-auto p-6">
+      <h1 class="text-4xl font-bold mb-8">User Manager</h1>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Left: Form -->
+        <div class="lg:col-span-1">
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-6">
+            <h2 class="text-xl font-semibold mb-5">Add User</h2>
+
+            <form class="space-y-4">
+              <div>
+                <label
+                  for="name"
+                  class="block text-sm font-medium text-slate-300 mb-2"
+                >
+                  Name
+                </label>
+                <input
+                  id="name"
+                  type="text"
+                  placeholder="Enter name"
+                  class="w-full rounded-lg bg-slate-800 border border-slate-700 px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                />
+              </div>
+
+              <div>
+                <label
+                  for="role"
+                  class="block text-sm font-medium text-slate-300 mb-2"
+                >
+                  Role
+                </label>
+                <input
+                  id="role"
+                  type="text"
+                  placeholder="Enter role"
+                  class="w-full rounded-lg bg-slate-800 border border-slate-700 px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                />
+              </div>
+
+              <div>
+                <label
+                  for="role"
+                  class="block text-sm font-medium text-slate-300 mb-2"
+                >
+                  Photo URL
+                </label>
+                <input
+                  id="photoUrl"
+                  type="text"
+                  placeholder="Enter photo url"
+                  class="w-full rounded-lg bg-slate-800 border border-slate-700 px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                />
+              </div>
+
+              <div>
+                <label
+                  for="bio"
+                  class="block text-sm font-medium text-slate-300 mb-2"
+                >
+                  Bio
+                </label>
+                <textarea
+                  id="bio"
+                  rows="4"
+                  placeholder="Tell us about the user..."
+                  class="w-full rounded-lg bg-slate-800 border border-slate-700 px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full rounded-lg bg-blue-600 hover:bg-blue-700 px-4 py-3 font-medium transition"
+              >
+                Add User
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Right: User Cards -->
+        <div class="lg:col-span-2">
+          <div class="flex items-center gap-x-3 mb-4">
+            <h2 class="text-xl font-semibold">Users</h2>
+            <span
+              id="user-count"
+              class="text-sm px-3 py-1 rounded-full bg-slate-800 text-slate-400"
+            >
+            </span>
+          </div>
+
+          <!-- user card list container -->
+          <div
+            class="user-card-container grid grid-cols-1 md:grid-cols-2 gap-5"
+          >
+            <!-- User Cards will go here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
