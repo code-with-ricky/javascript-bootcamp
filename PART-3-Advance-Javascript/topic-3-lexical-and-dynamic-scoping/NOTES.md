@@ -13,7 +13,7 @@ Example:
 ```javascript
 const username = "Ricky";
 
-function greet() {`
+function greet() {
     console.log(username);
 }
 
