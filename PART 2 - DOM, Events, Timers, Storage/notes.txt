@@ -1,0 +1,9 @@
+DOM Manipulation:
+1. Selecting elements: getElementById, getElementByClassName, querySelector, querySelectorAll
+2. Text/Content access: innerText, textContent, innerHtml
+3. Attibute Manipulation: getAttribute, setAttribute, removeAttribute
+4. Dynamic Dom manipulation: createElement, appendChild, prepend, removeChild
+5. style updates vua .style and classList (add, remove, toggle)
+
+
+Q. Difference between Element Node and Text Node  --> <p>This is paragraph</p> 

@@ -1,0 +1,312 @@
+Pre requisite:
+ -> Mocha to javascript (as java was popular that time) by brandom eek
+ -> make static browsers dynamic
+ -> Ecma Script --> ES5 (has issues) ---> got fixed in ES6 version
+
+
+Keywords
+  --> Keywords are special words having meaning in programming language
+  --> example: var, if, else, function, log, console etc
+
+
+Variables
+--> containers / memory address to store some values
+--> it can have following type of data
+    --> var, let, const
+
+Var Type:
+--> part of ES5
+--> value of that variable can be changed
+--> it can be declared and initialised separately
+    var b; // declaration
+    b = 30;
+--> it can be declared and initialised at same time
+    var a = 12;
+
+--> issues with var:
+    --> window mein add hota hai
+    --> function scoped hota hai
+    --> can be declared again with same name and no errors will appear
+
+
+Scope
+--> global
+--> block      (inside curly brackets)
+--> funtional  (inside function)
+
+Let type:
+--> part of ES6
+--> can be reassigned
+--> cannot be redeclared
+
+const type:
+--> part of ES6
+--> cannot be reassigned
+--> cannot be redeclared
+
+
+Temporal dead zone
+--> js knows variable exists but it cannot be accessed as its not initialised at that moment
+--> for any variable its TDZ is till the line where its initialised
+--> works for 'let' and 'const' and not for 'var'
+
+
+Hoisting:
+--> it means that variables created using var, its get divided into two parts: declared and initialised
+
+--> var a = 12;
+    --> var a = undefined; (goes to topmost)
+    --> a = 12;            (remains where it was)
+
+--> hoisting happens in all var, let, const
+    --> var => hoist => undefined
+    --> let => hoist => Reference error    (because of TDZ)
+    --> const => hoist => Reference error  (because of TDZ)
+
+
+Whats the output:
+Q. var x = 1;
+   {
+     var x = 2;
+   }
+   console.log(x);
+
+A: 2
+Reason: var is function scoped, x = 1 => global scoped
+        x = 2; (not inside a function) so its the same one which is global, just redeclared again, so it updates value from 1 to 2
+
+
+Q. let a = 10;
+   {
+     let a = 20;
+     console.log("Inside:", a);
+   }
+
+    console.log("Outside:", a);
+
+A: Inside: 20
+   Outside: 10
+Reason: let is block scoped; first one is global, and inside { } ie the block, its differently scoped, so inside one the value is 20, and outside one is 10 
+
+--------------------------------------------------------------------
+
+Data Types + Type System
+--> Primitive  
+    --> (jisme brackets nhi hota)
+    --> jinko copy karne pr real copy mil jae
+    --> string, number, boolean, null, undefined, symbol, bigint
+
+--> Reference  
+    --> (jisme brackets hota h)
+    --> jisko copy krne pr real copy nhi mile but parent ka reference mil jae
+    --> arrays, objects, functions
+
+
+Dynamic Typing:
+--> dynamic typing: js does not have static typing, like we have for other languages
+--> whatever value we put in variable, it becomes of that data type
+
+Type quirks
+--> typeof null  => 'object'
+--> typeof []    => 'object'
+--> typeof NaN   => 'object'
+
+Type coercion --> concept jisme k type automatically convert ho jaega
+let val = "5" + 1;  // 51
+console.log("val:", 5, "; typeof val:", typeof val);
+
+// '+' does 2 things "concat" or "addition"
+// if any of the operand is string it will do concatenation else addition
+
+// "5" - 1  = 4 
+
+
+Truthy vs Falsy values
+--> 0, false, "", null, undefined, NaN document.all --> falsy
+-->  remaining are true
+--> true = 1; false = 0
+
+Output of following:
+Q: true + false => 1 + 0 => 1
+Q: null + 1 => 0 + 1 => 1
+Q: 5 + "5" => "55"
+Q: !!undefined => false
+
+Note: typeof NaN ==> 'number'
+reason: js treats it as result of failed numerical operation.
+
+--------------------------------------------------------------------
+
+Operators
+1. Arithematic Operator: +, -, *, %, /, **
+2. Comparison Operators: ==, ===, !=, !==, >=, <=, >, <
+    --> == : it checks just value and not type
+    --> == : it checks value and type both
+
+3. assignment operator: =, +=, -=, *=, /=, **=, %=
+4. Logical Operators: &&, ||, !
+5.  Unary operators: ++, --, typeof, + , - , !
+6. Ternary operators --> ? :
+
+
+typeof vs instanceof
+--> typeof works with primitive datatypes
+--> instanceof works with reference datatypes
+
+Output of the following
+Q: let x = 10;
+   let y = 20;
+
+   if(x > 5 && y < 25){
+    console.log("A");
+   }else{
+    console.log("B");
+   }
+
+A: A
+
+Q. let score = 78;
+   let grade = score >= 90 ? "A" : score >= 75 ? "B" : score >= 60 ? "C" : "Fail"
+   console.log(grade);
+   
+A: B
+
+--------------------------------------------------------------------
+
+Control Flow
+1. if
+2. if else
+3. if - else if - else
+4. switch case
+5. early return pattern
+
+--------------------------------------------------------------------
+
+Loops
+1. for:     used when we clearly knows definite start and stop point
+2. while:   used when we know when to stop
+3. forEach & for-of  --> in arrays
+4. for in & Object.entries  --> in objects
+
+start point, end point, how to go
+
+
+Note:
+12345 / 10 = 1234.5  --> Math.floor(1234.5) = 1234
+
+--------------------------------------------------------------------
+
+Functions
+--------------------------------------------------------------------
+
+Arrays
+--> collection of data of same or different data Types
+--> indexing starts with 0
+--> Create array in following two ways:
+    --> let arr = [];
+    --> let arr = new Array();
+
+--> access array element: array_name[index]
+--> modify array value: array_name[index] = new_value
+
+Methods in array
+1. arr.length         --> finds nuber of elements in array
+2. arr.push(element)  --> append new element
+3. arr.pop()          --> removes last element
+4. arr.shift()        --> removes one element from first
+5. arr.unshift()      --> adds one element at front
+6. arr.splice(index, number of elements)
+    --> it changes the array itself
+7. arr.slice(index, number of elements)
+    --> it creates a new array
+8. arr.reverse()
+9. arr.sort()  --> by defualt sort in ascending order
+                --> arr.sort((a, b) => a-b);   // ascending
+                --> arr.sort((a, b) => b-a);   // descending
+
+
+ Array Traversing
+ 1. arr.forEach(function(){})
+    --> nums.forEach((num) => console.log(num + 1));
+
+ 2. arr.map(function(){})
+    --> use when new array need to be created from original Array
+    --> new arr length = old array length
+    --> let newArr = arr.map((val) => val * 4);
+
+3. arr.filter(function(){})
+    --> creates a new array of only those elements that satisfy the condition we write
+    --> let evenNums = nums.filter((num) => num % 2 == 0);
+
+4. arr.reduce(function(accumulator, currentValue){}, initial_value_of_accumulator)
+    --> used when you want to get a single final value from an array
+    --> value of return gets stored in the accumulator itself for next iteration
+    --> let sum = nums.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+
+5. arr.find(function(){})
+    --> returns a single value from the array, for which the condition gets satisfied in first occurrence
+    --> if the element not present satisfying the condition then value is undefined as final output
+    --> let val = nums.find((val) => val === 1000);
+
+6. arr.some(function(){})
+    --> gives a single boolean value as output if condition satisfies for any value in the array
+    --> let hasEven = nums.some((num) => num % 2 == 0);
+
+
+Array Destructuring
+--> let [a, b, c] = nums;  // assigns first three elements to a, b, c
+
+
+Spread Operator
+--> used to create copy of original array
+--> let arr2 = [...arr1];  // this solves the reference issue, so now editing arr2 will not affect arr1
+
+--------------------------------------------------------------------
+
+Objects
+--> collection of key-value pairs
+--> keys are strings, values can be any data type
+--> Create object in following ways:
+    --> let obj = {};
+    --> let obj = new Object();
+
+--> access object properties:
+    --> dot notation: obj.key
+    --> bracket notation: obj['key']
+
+--> add/modify properties:
+    --> obj.newKey = value;
+    --> obj['newKey'] = value;
+
+--> Note: Use bracket notation when key is stored in a variable
+    --> let myKey = 'name';
+    --> console.log(obj[myKey]);  // searches for 'name' key
+
+--> Nesting: objects can contain other objects
+    --> const user = { address: { city: "Pune", pin: 412105 } };
+    --> console.log(user.address.city);
+
+--> Object Destructuring
+    --> let { city, pin } = user.address;  // extracts properties into variables
+
+--> Looping in objects:
+    --> for...in loop: for (let key in obj) { console.log(key, obj[key]); }
+    --> Object.keys(obj): returns array of keys
+    --> Object.entries(obj): returns array of [key, value] pairs
+
+--> Object.assign(target, source): copies properties from source to target
+    --> let copy = Object.assign({}, original);  // shallow copy
+
+--> Object.freeze(obj): prevents modification of object properties
+
+--> Shallow Copy: copies top-level properties, nested objects are referenced
+    --> let copy = { ...original };  // spread operator creates shallow copy
+
+--> Deep Clone: creates complete independent copy
+    --> let deepCopy = JSON.parse(JSON.stringify(original));
+
+--> Optional Chaining: safely access nested properties
+    --> console.log(obj?.address?.city);  // returns undefined if property doesn't exist instead of error
+
+--------------------------------------------------------------------
+
